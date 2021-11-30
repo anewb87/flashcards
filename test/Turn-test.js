@@ -22,12 +22,17 @@ describe('Turn', function() {
   });
 
   it('should store a Card object for the current card in play', function() {
-    const card = new Card()
-    const turn = new Turn('my guess', card)
-    expect(turn.card).to.equal(card)
+    const card = new Card();
+    const turn = new Turn('my guess', card);
+    expect(turn.card).to.equal(card);
   });
 
-
+  it('should be able to return the user guess', function() {
+    const card = new Card()
+    const turn = new Turn('my guess', card);
+    turn.returnGuess()
+    expect(turn.returnGuess()).to.deep.equal('my guess')
+  })
 
 })
 
