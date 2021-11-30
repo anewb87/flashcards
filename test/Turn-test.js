@@ -64,8 +64,13 @@ describe('Turn', function() {
     expect(turn.giveFeedback()).to.deep.equal('correct!')
   });
 
-
+  it('should notify the user when they answer incorrectly', function() {
+    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    const turn = new Turn('array', card);
+    turn.evaluateGuess();
+    expect(turn.evaluateGuess()).to.deep.equal(false);
+    turn.giveFeedback();
+    expect(turn.giveFeedback()).to.deep.equal('incorrect!')
+  })
 
 })
-
-// giveFeedback - method that returns either ‘incorrect!’ or ‘correct!’ based on whether the guess is correct or not.
