@@ -11,31 +11,26 @@ describe('Turn', function() {
     expect(Turn).to.be.a('function');
   });
 
-  it('should be an instance of a Turn', function() {
+  it('should be an instance of Turn', function() {
     const turn = new Turn();
-    expect(Turn).to.be.an.instanceof(Turn);
+    expect(turn).to.be.an.instanceof(Turn);
   });
 
   it('should store a user guess to the question', function() {
     const turn = new Turn('my guess');
-    expect(Turn.guess).to.equal('my guess');
+    expect(turn.guess).to.equal('my guess');
   });
 
   it('should store a Card object for the current card in play', function() {
     const card = new Card()
     const turn = new Turn('my guess', card)
-    expect(Turn.card).to.equal(card)
+    expect(turn.card).to.equal(card)
   });
 
 
 
 })
 
-
-// Your Turn class should meet the following requirements:
-
-// Instantiated with two arguments - a string (that represents a user’s guess to the question), and a Card object for the current card in play.
-//***not sure if card object as parameter has been written correctly.
 
 // returnGuess: method that returns the guess
 
