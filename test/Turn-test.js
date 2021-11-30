@@ -71,6 +71,5 @@ describe('Turn', function() {
     expect(turn.evaluateGuess()).to.deep.equal(false);
     turn.giveFeedback();
     expect(turn.giveFeedback()).to.deep.equal('incorrect!')
-  })
-
-})
+  });
+});
