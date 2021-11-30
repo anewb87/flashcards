@@ -17,27 +17,33 @@ describe('Turn', function() {
   });
 
   it('should store a user guess to the question', function() {
-    const turn = new Turn('my guess');
-    expect(turn.guess).to.equal('my guess');
+    const turn = new Turn('user guess');
+    expect(turn.guess).to.equal('user guess');
   });
 
   it('should store a Card object for the current card in play', function() {
-    const card = new Card();
-    const turn = new Turn('my guess', card);
+    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    const turn = new Turn('user guess', card);
     expect(turn.card).to.equal(card);
   });
 
   it('should be able to return the user guess', function() {
-    const card = new Card()
-    const turn = new Turn('my guess', card);
-    turn.returnGuess()
-    expect(turn.returnGuess()).to.deep.equal('my guess')
-  })
+    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    const turn = new Turn('user guess', card);
+    turn.returnGuess();
+    expect(turn.returnGuess()).to.deep.equal('user guess');
+  });
 
+  it('should be able to return the Card object for the current card in play', function() {
+    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    const turn = new Turn('user guess', card);
+    turn.returnCard();
+    expect(turn.returnCard()).to.deep.equal(card)
+  });
 })
 
 
-// returnGuess: method that returns the guess
+
 
 // returnCard: method that returns the Card
 
