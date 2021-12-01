@@ -50,8 +50,7 @@ describe('Round', function() {
     round.takeTurn();
     round.takeTurn();
     round.takeTurn();
-    round.takeTurn();
-    expect(round.turns).to.equal(4);
+    expect(round.turns).to.equal(3);
   });
 
   it('should have a takeTurn method that instantiates Turn', function() {
@@ -71,8 +70,6 @@ describe('Round', function() {
     expect(round.currentTurn.evaluateGuess()).to.equal(true);
     round.takeTurn('yellow');
     expect(round.currentTurn.evaluateGuess()).to.equal(false);
-    round.takeTurn('mutator method');
-    expect(round.currentTurn.evaluateGuess()).to.equal(true);
   });
 
   it('should store incorrect guesses via id in an array of incorrectGuesses', function() {
@@ -90,13 +87,5 @@ describe('Round', function() {
   });
 })
 
-
-
-
-// takeTurn: method that updates turns count, evaluates guesses, gives feedback, and stores ids of incorrect guesses
-//
-
-
-// Feedback is returned regarding whether the guess is incorrect or correct
 // calculatePercentCorrect: method that calculates and returns the percentage of correct guesses
 // endRound: method that prints the following to the console: ‘** Round over! ** You answered <>% of the questions correctly!’
