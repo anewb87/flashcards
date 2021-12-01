@@ -8,7 +8,6 @@ describe('Deck', function() {
   let card1;
   let card2;
   let card3;
-  let cards;
   let deck;
 
   beforeEach(function() {
@@ -18,8 +17,7 @@ describe('Deck', function() {
       ['array', 'object', 'function'], 'array');
     card3 = new Card(3, 'What type of prototype method directly modifies the existing array?',
       ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
-    cards = [card1, card2, card3];
-    deck = new Deck(cards);
+    deck = new Deck([card1, card2, card3]);
   });
 
   it('should be a function', function() {
@@ -31,7 +29,7 @@ describe('Deck', function() {
   });
 
   it('should store a list of Card objects', function() {
-    expect(deck.cards).to.deep.equal(cards);
+    expect(deck.cards).to.deep.equal([card1, card2, card3]);
   });
 
   it('should count the items of Card objects in the list', function() {
