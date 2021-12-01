@@ -51,23 +51,28 @@ describe('Round', function() {
     round.takeTurn();
     round.takeTurn();
     round.takeTurn();
-    expect(round.turnCount).to.equal(4)
+    expect(round.turnCount).to.equal(4);
   });
 
   it('should have a takeTurn method that instantiate Turn', function() {
-    round.takeTurn('object')
-    expect(round.currentTurn).to.be.an.instanceof(Turn)
+    round.takeTurn('object');
+    expect(round.currentTurn).to.be.an.instanceof(Turn);
   });
+
+  it('should have the next card become the current card', function() {
+    round.takeTurn('object');
+    round.takeTurn('object')
+    expect(round.currentCard).to.equal(card2)
+  })
 })
 
 
 
-// returnCurrentCard: method that returns the current card being played
+
 // takeTurn: method that updates turns count, evaluates guesses, gives feedback, and stores ids of incorrect guesses
 //
-// When a guess is made, a new Turn instance is created.
-// The turns count is updated, regardless of whether the guess is correct or incorrect
-// The next card becomes current card
+
+
 // Guess is evaluated/recorded. Incorrect guesses will be stored (via the id) in an array of incorrectGuesses
 // Feedback is returned regarding whether the guess is incorrect or correct
 // calculatePercentCorrect: method that calculates and returns the percentage of correct guesses

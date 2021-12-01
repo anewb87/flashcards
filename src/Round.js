@@ -17,7 +17,8 @@ class Round {
   }
 
   takeTurn(guess) {
-    this.currentTurn = new Turn(guess, this.currentCard)
+    this.currentTurn = new Turn(guess, this.currentCard);
+    this.currentCard = this.deck.cards[this.turnCount]
     this.turnCount++
   }
 }
