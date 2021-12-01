@@ -39,7 +39,7 @@ describe('Round', function() {
   });
 
   it('should start with 0 turns', function() {
-    expect(round.turnCount).to.equal(0);
+    expect(round.turns).to.equal(0);
   });
 
   it('should be able to store incorrect guesses', function() {
@@ -51,19 +51,43 @@ describe('Round', function() {
     round.takeTurn();
     round.takeTurn();
     round.takeTurn();
-    expect(round.turnCount).to.equal(4);
+    expect(round.turns).to.equal(4);
   });
 
-  it('should have a takeTurn method that instantiate Turn', function() {
+  it('should have a takeTurn method that instantiates Turn', function() {
     round.takeTurn('object');
     expect(round.currentTurn).to.be.an.instanceof(Turn);
   });
 
   it('should have the next card become the current card', function() {
     round.takeTurn('object');
-    round.takeTurn('object')
-    expect(round.currentCard).to.equal(card2)
-  })
+    round.takeTurn('array');
+    round.takeTurn('mutator method')
+    expect(round.currentCard).to.equal(card3);
+  });
+
+  it('should evaluate the guess', function() {
+    round.takeTurn('object');
+    expect(round.currentTurn.evaluateGuess()).to.equal(true);
+    round.takeTurn('yellow');
+    expect(round.currentTurn.evaluateGuess()).to.equal(false);
+    round.takeTurn('mutator method');
+    expect(round.currentTurn.evaluateGuess()).to.equal(true);
+  });
+
+  it('should store incorrect guesses via id in an array of incorrectGuesses', function() {
+    round.takeTurn('object');
+    round.takeTurn('yellow');
+    round.takeTurn('orange');
+    expect(round.incorrectGuesses).to.deep.equal([2, 3]);
+  });
+
+  it('should tell the user when they have given an answer', function() {
+    round.takeTurn('object');
+    expect(round.currentTurn.giveFeedback()).to.equal('correct!')
+    round.takeTurn('yellow');
+    expect(round.currentTurn.giveFeedback()).to.equal('incorrect!')
+  });
 })
 
 
@@ -73,7 +97,6 @@ describe('Round', function() {
 //
 
 
-// Guess is evaluated/recorded. Incorrect guesses will be stored (via the id) in an array of incorrectGuesses
 // Feedback is returned regarding whether the guess is incorrect or correct
 // calculatePercentCorrect: method that calculates and returns the percentage of correct guesses
 // endRound: method that prints the following to the console: ‘** Round over! ** You answered <>% of the questions correctly!’
