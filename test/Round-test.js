@@ -85,7 +85,17 @@ describe('Round', function() {
     round.takeTurn('yellow');
     expect(round.currentTurn.giveFeedback()).to.equal('incorrect!')
   });
-})
 
-// calculatePercentCorrect: method that calculates and returns the percentage of correct guesses
-// endRound: method that prints the following to the console: ‘** Round over! ** You answered <>% of the questions correctly!’
+  it('should calculate the percentage of correct answers', function() {
+    round.takeTurn('object');
+    round.takeTurn('yellow');
+    expect(round.calculatePercentCorrect()).to.equal(50);
+  });
+
+  it('should let the user know the round is over and gives them their percentage of correct answers', function() {
+    round.takeTurn('object');
+    round.takeTurn('yellow');
+    expect(round.calculatePercentCorrect()).to.equal(50);
+    expect(round.endRound()).to.equal(`**Round over!** You answered ${round.calculatePercentCorrect()} of the questions correctly!`)
+  });
+})
