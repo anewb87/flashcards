@@ -16,10 +16,10 @@ class Round {
   takeTurn(guess) {
     this.currentTurn = new Turn(guess, this.currentCard);
     this.currentCard = this.deck.cards[this.turns];
-    if (this.currentTurn.evaluateGuess() === false) {
-      this.incorrectGuesses.push(this.currentCard.id)
+    if (!this.currentTurn.evaluateGuess()) {
+      this.incorrectGuesses.push(this.currentCard.id);
     }
-    this.currentTurn.giveFeedback()
+    this.currentTurn.giveFeedback();
     this.turns++
   }
 
