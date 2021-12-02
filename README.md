@@ -2,11 +2,11 @@
 
 ## Abstract
 
-This is a program that simulates a set of flash cards through the command line. A user will be able to read the questions, take guesses, and see a final score at the end of the round.
+This is a program that simulates a set of flashcards through the command line. A user will be able to read the questions, take guesses, and see a final score at the end of the round.
 
 ## How to Play
 
-In the terminal, run:
+Install and set up the flashcards (see below). Then, in the terminal, run:
 
 ```bash
 node index.js
