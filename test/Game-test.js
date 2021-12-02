@@ -3,19 +3,14 @@ const expect = chai.expect;
 const data = require('../src/data');
 const prototypeQuestions = data.prototypeData;
 
-const Game = require('../src/Game')
-const Round = require('../src/Round');
-const Card = require('../src/Card');
-const Deck = require('../src/Deck');
+const Game = require('../src/Game');
 
 describe('Game', function() {
   let game;
-  let deck;
   let cards;
 
   beforeEach(function() {
     game = new Game;
-    deck = new Deck;
     cards = prototypeQuestions;
   });
 
@@ -28,16 +23,17 @@ describe('Game', function() {
   });
 
   it('should have a start method that creates Cards', function() {
-    game.start()
-    expect(game).to.have.a.property('deck')
+    game.start();
+    expect(game).to.have.a.property('deck');
   });
 
   it('should put Cards in a Deck', function() {
-    game.start()
-    expect(game.deck.cards).to.deep.equal(cards)
+    game.start();
+    expect(game.deck.cards).to.deep.equal(cards);
   });
 
-
-
-
+  it('should create a new Round using the Deck', function() {
+    game.start();
+    expect(game.round.deck.cards).to.deep.equal(cards);
+  });
 })
