@@ -1,41 +1,8 @@
-# FlashCards Starter Kit
+# Flashcards: Test Your Dev Knowledge!
 
-## Fork This Repo
+## Abstract
 
-On the top right corner of this page, click the **Fork** button.
-
-## Setup
-
-Clone down the forked repo (from your GitHub). Since you don't want to name your project "flashcards-starter", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments):
-
-```bash
-git clone [remote-address] [what you want to name the repo]
-```
-
-Once you have cloned the repo, change into the directory and install the library dependencies. Run:
-
-```bash
-npm install
-```
-
-To verify that it is setup correctly, run `npm test` in your terminal. You should have 5 pending tests in your `Card` test file that show up.
-
-Running `node index.js` from the root of your project should result in the following message being displayed in your terminal:
-
-```bash
-Node server running on port 3000
-```
-
-*Note that you will not need to you run your server until you are instantiating your `Game` class in Iteration 3. Prior to that, you should be using TDD to drive your code. You should check the functionality of your application by running your tests via `npm test`.*
-
-
-## Where to Add Your Code
-
-### JavaScript
-
-**Create all of your feature code files in the `src` directory.**
-
-We will be using the `module.exports` and `require` syntax to share code across files.
+This is a program that simulates a set of flash cards through the command line. A user will be able to read the questions, take guesses, and see a final score at the end of the round.
 
 ## How to Play
 
@@ -45,39 +12,40 @@ In the terminal, run:
 node index.js
 ```
 
-User will be greeted with *Welcome to Flashcards!* followed by the number of cards in their deck. They will be prompted for each question, have the opportunity to select an answer, and will be given feedback.  
+A user will be greeted with *Welcome to Flashcards!* followed by the number of cards in their deck. They will be prompted for each question, have the opportunity to select an answer, and will be given feedback. The current answer selection will change colors, so the user can see which answer they've selected before submitting.
 
-The current answer selection will change colors, so the user can see what answer they've selected before submitting. You will be able to play through the entire deck of cards:
+![flash cards intro gif](https://media.giphy.com/media/3ARIZYPhMMJldjhM7M/giphy.gif)
 
-At the end of the game, the user will be informed that they have finished the game and will be presented with their score.
+The user will be able to play through the entire deck of cards. At the end of the game, they will be informed that they have finished and will be presented with their score.
 
-![flash cards example gif](https://media.giphy.com/media/1zkb1q58eTiTH6D7wc/giphy.gif)
+![flash cards quick game gif](https://media.giphy.com/media/JL6db2G7HSJf2JHuG4/giphy.gif)
 
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `Round-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
+To exit the game at any time, hit:
 
 ```bash
-npm test
+  ctl + c
 ```
 
-The test results will output to the terminal.
+## Tech Stack
 
----
+JavaScript
 
-## Linting Your Code
+## Install/Setup
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
+In your terminal, run:
 
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
+```bash
+  git clone git@github.com:anewb87/flashcards.git
+  cd flashcards
+  node index.js
+```
 
----
+## Contributor
+
+Application Developer:  
+- [Lexy Newby](https://github.com/anewb87)
+
+Boilerplate Code Credits:
+- [Original Project Specifications](https://frontend.turing.edu/projects/flash-cards.html) by Turing School of Software & Design
+
+![funny flashcard gif](http://25.media.tumblr.com/tumblr_m0dyhaGQV41r9x0sdo1_500.gif)
