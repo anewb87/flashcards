@@ -13,7 +13,7 @@ class Game {
 
   start() {
     let cards = prototypeQuestions.map(function(card) {
-      return new Card (card.id, card.question, card.answers, card.correctAnswer)
+      return new Card (card.id, card.question, card.answers, card.correctAnswer);
     });
     this.deck = new Deck (cards);
     this.round = new Round (this.deck);

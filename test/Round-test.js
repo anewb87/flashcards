@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const Round = require('../src/Round');
 const Card = require('../src/Card');
-const Deck = require('../src/Deck')
+const Deck = require('../src/Deck');
 const Turn = require('../src/Turn');
 
 describe('Round', function() {
@@ -47,8 +47,7 @@ describe('Round', function() {
   it('should have a takeTurn method that updates the turn count after each guess', function() {
     round.takeTurn();
     round.takeTurn();
-    round.takeTurn();
-    expect(round.turns).to.equal(3);
+    expect(round.turns).to.equal(2);
   });
 
   it('should have a takeTurn method that instantiates Turn', function() {
@@ -72,8 +71,7 @@ describe('Round', function() {
   it('should store incorrect guesses via id in an array of incorrectGuesses', function() {
     round.takeTurn('object');
     round.takeTurn('yellow');
-    round.takeTurn('orange');
-    expect(round.incorrectGuesses).to.deep.equal([2, 3]);
+    expect(round.incorrectGuesses).to.deep.equal([2]);
   });
 
   it('should tell the user when they have given an answer', function() {
@@ -93,6 +91,6 @@ describe('Round', function() {
     round.takeTurn('object');
     round.takeTurn('yellow');
     expect(round.calculatePercentCorrect()).to.equal(50);
-    expect(round.endRound()).to.equal(`**Round over!** You answered ${round.calculatePercentCorrect()} of the questions correctly!`);
+    expect(round.endRound()).to.equal(`**Round over!** You answered ${round.calculatePercentCorrect()}% of the questions correctly!`);
   });
 })
