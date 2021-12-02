@@ -22,6 +22,8 @@ describe('Round', function() {
       ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     deck = new Deck([card1, card2, card3]);
     round = new Round(deck);
+    round.takeTurn('object');
+    round.takeTurn('yellow');
   });
 
   it('should be a function', function() {
@@ -33,64 +35,46 @@ describe('Round', function() {
   });
 
   it('should return the current card being played', function() {
-    expect(round.returnCurrentCard()).to.equal(card1);
+    expect(round.returnCurrentCard()).to.equal(card3);
   });
 
-  it('should start with 0 turns', function() {
-    expect(round.turns).to.equal(0);
+  it('should start with 2 turns', function() {
+    expect(round.turns).to.equal(2);
   });
 
   it('should be able to store incorrect guesses', function() {
-    expect(round.incorrectGuesses).to.deep.equal([]);
+    expect(round.incorrectGuesses).to.deep.equal([2]);
   });
 
   it('should have a takeTurn method that updates the turn count after each guess', function() {
-    round.takeTurn();
-    round.takeTurn();
     expect(round.turns).to.equal(2);
   });
 
   it('should have a takeTurn method that instantiates Turn', function() {
-    round.takeTurn('object');
     expect(round.currentTurn).to.be.an.instanceof(Turn);
   });
 
   it('should have the next card become the current card', function() {
-    round.takeTurn('object');
-    round.takeTurn('array');
     expect(round.currentCard).to.equal(card3);
   });
 
   it('should evaluate the guess', function() {
-    round.takeTurn('object');
-    expect(round.currentTurn.evaluateGuess()).to.equal(true);
-    round.takeTurn('yellow');
     expect(round.currentTurn.evaluateGuess()).to.equal(false);
   });
 
   it('should store incorrect guesses via id in an array of incorrectGuesses', function() {
-    round.takeTurn('object');
-    round.takeTurn('yellow');
     expect(round.incorrectGuesses).to.deep.equal([2]);
   });
 
   it('should tell the user when they have given an answer', function() {
-    round.takeTurn('object');
-    expect(round.currentTurn.giveFeedback()).to.equal('correct!');
-    round.takeTurn('yellow');
     expect(round.currentTurn.giveFeedback()).to.equal('incorrect!');
   });
 
   it('should calculate the percentage of correct answers', function() {
-    round.takeTurn('object');
-    round.takeTurn('yellow');
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
 
   it('should let the user know the round is over and gives them their percentage of correct answers', function() {
-    round.takeTurn('object');
-    round.takeTurn('yellow');
-    expect(round.calculatePercentCorrect()).to.equal(50);
     expect(round.endRound()).to.equal(`**Round over!** You answered ${round.calculatePercentCorrect()}% of the questions correctly!`);
   });
 })
