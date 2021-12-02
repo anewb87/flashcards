@@ -59,7 +59,6 @@ describe('Round', function() {
   it('should have the next card become the current card', function() {
     round.takeTurn('object');
     round.takeTurn('array');
-    round.takeTurn('mutator method');
     expect(round.currentCard).to.equal(card3);
   });
 

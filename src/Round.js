@@ -4,7 +4,7 @@ class Round {
   constructor(deck) {
     this.deck = deck;
     this.turns = 0;
-    this.currentCard = deck.cards[this.turns] || 0;
+    this.currentCard = deck.cards[0];
     this.incorrectGuesses = [];
     this.currentTurn = undefined;
   }
