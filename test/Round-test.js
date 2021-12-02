@@ -12,7 +12,6 @@ describe('Round', function() {
   let card3;
   let deck;
   let round;
-  // let turn;
 
   beforeEach(function() {
     card1 = new Card(1, 'What allows you to define a set of related information using key-value pairs?',
@@ -23,7 +22,6 @@ describe('Round', function() {
       ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
     deck = new Deck([card1, card2, card3]);
     round = new Round(deck);
-    // turn = new Turn()
   });
 
   it('should be a function', function() {
@@ -61,7 +59,6 @@ describe('Round', function() {
   it('should have the next card become the current card', function() {
     round.takeTurn('object');
     round.takeTurn('array');
-    round.takeTurn('mutator method')
     expect(round.currentCard).to.equal(card3);
   });
 
@@ -81,9 +78,9 @@ describe('Round', function() {
 
   it('should tell the user when they have given an answer', function() {
     round.takeTurn('object');
-    expect(round.currentTurn.giveFeedback()).to.equal('correct!')
+    expect(round.currentTurn.giveFeedback()).to.equal('correct!');
     round.takeTurn('yellow');
-    expect(round.currentTurn.giveFeedback()).to.equal('incorrect!')
+    expect(round.currentTurn.giveFeedback()).to.equal('incorrect!');
   });
 
   it('should calculate the percentage of correct answers', function() {
@@ -96,6 +93,6 @@ describe('Round', function() {
     round.takeTurn('object');
     round.takeTurn('yellow');
     expect(round.calculatePercentCorrect()).to.equal(50);
-    expect(round.endRound()).to.equal(`**Round over!** You answered ${round.calculatePercentCorrect()} of the questions correctly!`)
+    expect(round.endRound()).to.equal(`**Round over!** You answered ${round.calculatePercentCorrect()} of the questions correctly!`);
   });
 })
